@@ -4,6 +4,7 @@
         <div class="card-header">
             Please sign in
         </div>
+        
         <div class="card-body">
             <form (ngSubmit)="login()" #loginForm="ngForm">
                 <div class="form-group">
@@ -23,6 +24,7 @@
                            [(ngModel)]="passWord"
                            [ngModelOptions]="{ standalone: true }" />
                 </div>
+                <label class="text-danger">{{ loginfail }}</label>
                 <button type="submit" class="btn btn-success btn-md btn-block">
                     Login
                 </button>

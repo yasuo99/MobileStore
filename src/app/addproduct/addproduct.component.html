@@ -1,0 +1,76 @@
+<app-header title="Mobile Store" subtitle="" button=""></app-header>
+<div class="container">
+    <div class="text-success">{{ success }}</div>
+    <section class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Thêm sản phẩm mới</h3>
+      </div>
+      <div class="panel-body">
+        <form (ngSubmit)="addProduct()" #addProductForm="ngForm">
+          <div class="form-group">
+            <div class="col-sm-9">
+              <input type="text" [(ngModel)]="productName"
+              [ngModelOptions]="{ standalone: true }" class="form-control" name="name" id="name" placeholder="Tên sản phẩm">
+            </div>
+          </div> <!-- form-group // -->
+          <div class="form-group">
+            <div class="col-sm-9">
+              <input type="text" [(ngModel)]="unitPrice"
+              [ngModelOptions]="{ standalone: true }" class="form-control" name="name" id="name" placeholder="Giá">
+            </div>
+          </div> <!-- form-group // -->
+          <div class="form-group">
+            <div class="col-sm-9">
+              <input type="text" [(ngModel)]="unitInStock"
+              [ngModelOptions]="{ standalone: true }" class="form-control" name="name" id="name" placeholder="Số lượng">
+            </div>
+          </div> <!-- form-group // -->
+          <div class="form-group">
+            <div class="col-sm-3">
+              <textarea [(ngModel)]="description"
+              [ngModelOptions]="{ standalone: true }" class="form-control" placeholder="Mô tả" style="resize: none"></textarea>
+            </div>
+          </div> <!-- form-group // -->
+          <div class="form-group">
+            <div class="col-sm-9">
+              <input type="text" [(ngModel)]="manufacturer"
+              [ngModelOptions]="{ standalone: true }" class="form-control" name="name" id="name" placeholder="NSX">
+            </div>
+          </div> <!-- form-group // -->
+          <div class="form-group">
+            <div class="col-sm-9">
+              <input type="text" [(ngModel)]="category"
+              [ngModelOptions]="{ standalone: true }" class="form-control" name="name" id="name" placeholder="Loại">
+            </div>
+          </div> <!-- form-group // -->
+          <div class="form-group">
+            <label for="name" class="col-sm-3 control-label">Tình trạng</label>
+            <div class="col-sm-9">
+              <label class="radio-inline">
+                <input type="radio" name="inlineRadioOptions" [(ngModel)]="condition" id="inlineRadio1" value="new"> Mới
+              </label>
+              <label class="radio-inline">
+                <input type="radio" [(ngModel)]="condition" name="inlineRadioOptions" id="inlineRadio2" value="old"> Cũ
+              </label>
+              <label class="radio-inline">
+                <input type="radio" [(ngModel)]="condition" name="inlineRadioOptions" id="inlineRadio2" value="refurbished"> Trả bảo hành
+              </label>
+            </div>
+          </div> <!-- form-group // -->
+          <div class="form-group">
+            <div class="col-sm-3">
+              <input name="file_img"  [(ngModel)]="productImage" class="form-control" placeholder="Link hình ảnh">
+            </div>
+  
+            <div class="form-group">
+              <div class="col-sm-offset-3 col-sm-9">
+                <button type="submit" class="btn btn-primary">Thêm sản phẩm</button>
+              </div>
+            </div> <!-- form-group // -->
+        </div>
+        </form>
+  
+      </div><!-- panel-body // -->
+    </section><!-- panel// -->
+  
+  </div> <!-- container// -->

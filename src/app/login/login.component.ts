@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import {AuthenticationService} from './authentication.service';
 import {Router} from '@angular/router';
+import {HeaderComponent} from '../header/header.component'
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -8,9 +9,12 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
+  @Input() loginfail = '';
   public userName = 'NgocThanh';
   public passWord = 'NgocThanh';
-  constructor(private authenticationService: AuthenticationService,router: Router) { }
+  constructor(private authenticationService: AuthenticationService,private router: Router) {
+    
+   }
   login = () => {
     this.authenticationService.login(this.userName,this.passWord).subscribe(
       (data) => {
@@ -18,9 +22,12 @@ export class LoginComponent implements OnInit {
         {
           localStorage.setItem('username',data.username);
           localStorage.setItem('password',data.password);
+          this.router.navigateByUrl("/admin/addproduct");
           console.log('Login success');
+          this.router.navigateByUrl("/admin/addproduct");
         }
         else{
+          this.loginfail = 'Tài khoản hoặc mật khẩu không chính xác';
           console.log('Login fail');
         }
       },

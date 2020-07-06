@@ -1,0 +1,35 @@
+<app-header title="Mobile Store" subtitle="" button=""></app-header>
+<div class="container">
+    <div class="card">
+        <div class="container-fliud">
+            <div class="wrapper row">
+                <div class="preview col-md-6">
+                    <img src="{{ productImage }}"/>
+                </div>
+                <div class="details col-md-6" *ngIf='product'>
+                    <h3 class="product-title">{{ productName }}</h3>
+                    <div class="rating">
+                        <div class="stars">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                        </div>
+                    </div>
+                    <p class="product-description">{{ productDescription }}</p>
+                    <h4 class="price">current price: <span>{{ unitPrice }}</span></h4>
+                    <h5 class="sizes">category:
+                        <span class="size" data-toggle="tooltip" title="{{ condition }}">{{ category }}</span>
+                    </h5>
+                    <h5 class="colors">condition:
+                        <span class="size" data-toggle="tooltip" title="{{ condition }}">{{ condition }}</span>
+                    </h5>
+                    <div class="action">
+                        <button class="add-to-cart btn btn-primary" (click)="addToCart(product)" type="button">Thêm vào giỏ</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

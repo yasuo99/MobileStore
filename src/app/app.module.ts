@@ -7,11 +7,19 @@ import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
+import { HomeComponent } from './home/home.component';
+import { AddproductComponent } from './addproduct/addproduct.component';
+import { CartComponent } from './cart/cart.component';
+import { ProductdetailComponent } from './productdetail/productdetail.component';
 @NgModule({
   declarations: [
     AppComponent,
+    HeaderComponent,
     LoginComponent,
-    HeaderComponent
+    HomeComponent,
+    AddproductComponent,
+    CartComponent,
+    ProductdetailComponent
   ],
   imports: [
     BrowserModule,

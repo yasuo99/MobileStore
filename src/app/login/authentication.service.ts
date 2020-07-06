@@ -10,7 +10,7 @@ import {map} from 'rxjs/operators';
 export class AuthenticationService{
     private currentUserSubject: BehaviorSubject<User>;
     public currentUser: Observable<User>;
-    private urlAPI = '192.168.1.15:8080';
+    private urlAPI = 'http://192.168.1.7:8080';
     constructor(private  http:HttpClient)
     {
         this.currentUserSubject = new BehaviorSubject<User>(
@@ -20,6 +20,11 @@ export class AuthenticationService{
     }
     public get currentUserValue(): User{
         return this.currentUserSubject.value;
+    }
+    public addproduct = (productName: String, unitPrice: Int16Array, unitInStock: Int16Array, description: String,manufacturer: String,category: String,productCondition: String, productImage:String) =>
+    {
+        const loginUrl = `${this.urlAPI}/api/product/list`;
+        return this.http.post<any>(loginUrl,{ productName,unitPrice,unitInStock,description,manufacturer,category,productCondition,productImage})
     }
     public login = (username: String, password: String) =>
     {
