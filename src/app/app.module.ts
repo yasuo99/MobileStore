@@ -19,7 +19,7 @@ import { ProductdetailComponent } from './productdetail/productdetail.component'
     HomeComponent,
     AddproductComponent,
     CartComponent,
-    ProductdetailComponent
+    ProductdetailComponent,
   ],
   imports: [
     BrowserModule,

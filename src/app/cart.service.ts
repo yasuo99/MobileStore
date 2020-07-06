@@ -7,21 +7,28 @@ export class CartService {
     items = []
     addToCart(product) {
         var products = JSON.parse(localStorage.getItem('cart'));
-        var flag = false;
-        console.log(products);
-        for(var i = 0;i<products.length;i++)
+        if(products == null)
         {
-            console.log(product);
-            
-            if(products[i].id === product.id)
-            {
-                flag = true;
-                break;
-            }
+            this.items.push(product);
+            localStorage.setItem('cart',JSON.stringify(this.items));
         }
-        if (flag == false) {
-            products.push(product);
-            localStorage.setItem('cart', JSON.stringify(products));
+        else{
+            var flag = false;
+            console.log(products);
+            for(var i = 0;i<products.length;i++)
+            {
+                console.log(product);
+                
+                if(products[i].id === product.id)
+                {
+                    flag = true;
+                    break;
+                }
+            }
+            if (flag == false) {
+                products.push(product);
+                localStorage.setItem('cart', JSON.stringify(products));
+            }
         }
     }
     removeFromCart(product) {
