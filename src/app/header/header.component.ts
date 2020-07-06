@@ -1,37 +1,34 @@
 import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
-import {Router} from '@angular/router';
-import {AuthenticationService} from '../login/authentication.service';
+import { Router } from '@angular/router';
+import { AuthenticationService } from '../login/authentication.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit{
-  @Input() title='';
-  @Input() subtitle='';
-  @Input() buttonlogout='';
+export class HeaderComponent implements OnInit {
+  @Input() title = '';
+  @Input() subtitle = '';
+  @Input() buttonlogout = '';
   @Input() button = '';
+  @Input() cartCount: '0';
   public amen = '';
-  constructor(private authenticationService: AuthenticationService, private router: Router) { 
-  }
-  public anlol = (title,button) =>
-  {
-    this.title = title;
-    this.buttonlogout = button;
-    console.log(this.buttonlogout)
+  constructor(private authenticationService: AuthenticationService, private router: Router) {
   }
   ngOnInit(): void {
-    if(localStorage.getItem('username') != null)
-    {
+    if (localStorage.getItem('username') != null) {
       this.buttonlogout = 'logout';
+    }
+    if (JSON.parse(localStorage.getItem('cart')) != null) {
+      this.cartCount = JSON.parse(localStorage.getItem('cart')).length;
     }
     this.button = 'view-cart';
   }
   public onLogout = () => {
     this.authenticationService.logout();
-      localStorage.removeItem('username');
-      localStorage.removeItem('password');
-      this.router.navigateByUrl('/login');
+    localStorage.removeItem('username');
+    localStorage.removeItem('password');
+    this.router.navigateByUrl('/login');
   }
 
 }

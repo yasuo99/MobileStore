@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs'
 import {Product} from '../model'
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 @Injectable({
     providedIn: 'root',
@@ -47,6 +47,26 @@ export class ProductService{
     public getAllProduct = () =>{
         const getProductUrl = `${this.urlAPI}/api/product/list`;
         return this.http.get<any>(getProductUrl).pipe(
+            map((products) => {
+                if(products != null)
+                {
+                    const getProduct = [];
+                    products.forEach(element => {
+                        getProduct.push(element);
+                        this.currentProductSubject.next(element);
+                    });
+                    return getProduct;
+                }
+                else{
+                    return null;
+                }
+            })
+        )
+    }
+    public getProductByName = (productName: string) =>
+    {
+        const getUrl = `${this.urlAPI}/api/product?productName=` + productName;
+        return this.http.get<any>(getUrl).pipe(
             map((products) => {
                 if(products != null)
                 {

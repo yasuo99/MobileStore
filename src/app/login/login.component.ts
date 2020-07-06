@@ -10,8 +10,8 @@ import {HeaderComponent} from '../header/header.component'
 export class LoginComponent implements OnInit {
 
   @Input() loginfail = '';
-  public userName = 'NgocThanh';
-  public passWord = 'NgocThanh';
+  public userName = '';
+  public passWord = '';
   constructor(private authenticationService: AuthenticationService,private router: Router) {
     
    }

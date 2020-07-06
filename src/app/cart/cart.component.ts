@@ -1,4 +1,4 @@
-import { Component,OnInit} from '@angular/core';
+import { Component,OnInit, Input} from '@angular/core';
 import {CartService} from "../cart.service"
 @Component({
   selector: 'app-cart',
@@ -9,11 +9,15 @@ export class CartComponent implements OnInit{
 
   items;
   product;
+  @Input() total:number;
   constructor(private cartService: CartService) { }
 
   ngOnInit(): void{
-    
+    this.total = 0;
     this.items = this.cartService.getItems();
+    this.items.forEach(element => {
+      this.total += element.unitPrice;
+    });
   }
   public removeFromCart(item)
   {
